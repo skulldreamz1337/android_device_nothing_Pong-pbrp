@@ -1,2 +1,11 @@
 # Battery Property
 ro.charger.enable_suspend=1
+
+# Keymaster HAL version used for FBE decryption in recovery.
+# BoardConfig sets TW_FORCE_KEYMASTER_VER, which makes recovery read this
+# prop instead of detecting the version from the vendor manifest. The
+# manifest declares only KeyMint, so detection finds nothing and decrypt
+# hangs waiting for a keymaster service that was never started. 4.1 fires
+# the trigger for keymaster-4-1-qti, whose binary is in the ramdisk, and
+# matches what OrangeFox uses on this device.
+keymaster_ver=4.1
